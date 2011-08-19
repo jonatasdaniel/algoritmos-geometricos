@@ -13,9 +13,13 @@ end
 class GrahamScan
   attr_reader :points
   
-  def initialize(points)
+  def initialize(points=[])
     @points = points
   end
+
+	def <<(point)
+		@points << point
+	end
   
   def start
     @points.sort! {|a, b| a.x <=> b.x}
@@ -48,6 +52,15 @@ class GrahamScan
   end
   
   def direction(p1, p2, p3)
+		if p1.nil?
+			puts "p1"
+		end
+		if p2.nil?
+			"puts p2"
+		end
+		if p3.nil?
+			"puts p3"
+		end
     (p2.x - p1.x) * (p3.y - p1.y) - (p2.y - p1.y) * (p3.x - p1.x)
   end
   
@@ -59,8 +72,14 @@ class GrahamScan
   end
 end
 
-points = [Point.new(4, 5), Point.new(3, 5), Point.new(5, 5)]
-graham_scan = GrahamScan.new(points)
-puts "before #{points}"
+graham_scan = GrahamScan.new
+
+(0..50).each do
+	p = Point.new(rand(50), rand(50))
+	puts "adding #{p.x} #{p.y}"
+	graham_scan << p
+end
+
+puts "before #{graham_scan.points}"
 points = graham_scan.start
 puts "after #{points}"
