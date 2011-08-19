@@ -37,7 +37,7 @@ public class Graph extends JFrame {
 		g.setColor(Color.black);
 		
 		for (Point p : points) {
-			g.fillOval((p.getX()*scale)+20, (p.getY()*scale)+80, 15, 15);
+			g.fillOval((p.getX()*scale)+20, (p.getY()*scale)+80, 5, 5);
 		}
 	}
 

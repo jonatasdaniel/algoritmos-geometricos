@@ -1,19 +1,15 @@
 package bcc.ag;
 
+import java.text.MessageFormat;
+
 public class Point implements Comparable<Point> {
 
-	private String orderBy;
 	private Integer x;
 	private Integer y;
-
-	public Point(Integer x, Integer y) {
-		this(x, y, "x");
-	}
 	
-	public Point(Integer x, Integer y, String orderBy) {
+	public Point(Integer x, Integer y) {
 		this.x = x;
 		this.y = y;
-		this.orderBy = orderBy;
 	}
 	
 	public Integer getX() {
@@ -33,28 +29,24 @@ public class Point implements Comparable<Point> {
 	}
 
 	@Override
+	public String toString() {
+		return MessageFormat.format("x: {0} , y: {1}", x, y);
+	}
+	
+	@Override
 	public int compareTo(Point o) {
-		if(orderBy != null) {
-			if(orderBy.equals("x")) {
-				if(x > o.getX()) {
-					return 1;
-				} else if(x < o.getX()) {
-					return -1;
-				} else {
-					return 0;
-				}
-			} else if(orderBy.equals("y")) {
-				if(y > o.getY()) {
-					return 1;
-				} else if(y < o.getY()) {
-					return -1;
-				} else {
-					return 0;
-				}
-			}
-			return 0;
+		if(x > o.getX()) {
+			return 1;
+		} else if(x < o.getX()) {
+			return -1;
 		} else {
-			return 0;
+			if(y > o.getY()) {
+				return 1;
+			} else if(y < o.getY()) {
+				return -1;
+			} else {
+				return 0;
+			}
 		}
 	}
 

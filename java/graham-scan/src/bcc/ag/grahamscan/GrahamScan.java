@@ -27,7 +27,7 @@ public class GrahamScan {
 			Point point = points.get(i);
 			pontosSuperiores.add(point);
 			
-			while(pontosSuperiores.size() > 2 && direction(pontosSuperiores.get(pontosSuperiores.size()-1), pontosSuperiores.get(pontosSuperiores.size()-2), pontosSuperiores.get(pontosSuperiores.size()-3)) > 0) {
+			while(pontosSuperiores.size() > 2 && direction(pontosSuperiores.get(pontosSuperiores.size()-1), pontosSuperiores.get(pontosSuperiores.size()-2), pontosSuperiores.get(pontosSuperiores.size()-3)) >= 0) {
 				pontosSuperiores.remove(pontosSuperiores.size()-2);
 			}
 		}
@@ -35,17 +35,17 @@ public class GrahamScan {
 		pontosInferiores.add(points.get(points.size()-1));
 		pontosInferiores.add(points.get(points.size()-2));
 		
-		for (int j = points.size()-2; j > 0; j--) {
+		for (int j = points.size()-1; j >= 0; j--) {
 			Point point = points.get(j);
 			pontosInferiores.add(point);
 			
-			while(pontosInferiores.size() > 2 && direction(pontosInferiores.get(pontosInferiores.size()-1), pontosInferiores.get(pontosInferiores.size()-2), pontosInferiores.get(pontosInferiores.size()-3)) > 0) {
+			while(pontosInferiores.size() > 2 && direction(pontosInferiores.get(pontosInferiores.size()-1), pontosInferiores.get(pontosInferiores.size()-2), pontosInferiores.get(pontosInferiores.size()-3)) >= 0) {
 				pontosInferiores.remove(pontosInferiores.size()-2);
 			}
 		}
 		
-		pontosInferiores.remove(0);
-		pontosInferiores.remove(pontosInferiores.size()-1);
+		/*pontosInferiores.remove(0);
+		pontosInferiores.remove(pontosInferiores.size()-1);*/
 		pontosSuperiores.remove(0);
 		pontosSuperiores.remove(pontosSuperiores.size()-1);
 		
