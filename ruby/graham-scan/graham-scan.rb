@@ -52,15 +52,6 @@ class GrahamScan
   end
   
   def direction(p1, p2, p3)
-		if p1.nil?
-			puts "p1"
-		end
-		if p2.nil?
-			"puts p2"
-		end
-		if p3.nil?
-			"puts p3"
-		end
     (p2.x - p1.x) * (p3.y - p1.y) - (p2.y - p1.y) * (p3.x - p1.x)
   end
   
